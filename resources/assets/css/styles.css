@@ -1,0 +1,15 @@
+body {
+ font-family: 'Lato';
+}
+
+.fa-btn {
+            margin-right: 6px;
+}
+
+.table-text{
+	width: 70%;
+}
+
+.done-task{
+    background-color: rgb(204, 238, 204);
+}
