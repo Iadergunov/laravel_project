@@ -20,10 +20,6 @@ Route::get('/contact', 'Pages_controller@contact');
 
 Route::get('/about', 'Pages_controller@about');
 
-/**
- * Routes for financial section
- */
-
 Route::get('/finance', 'Finance_controller@index');
 
 /**
@@ -60,3 +56,7 @@ Route::get('/tasks', 'Tasks_controller@index');
 
 /** Create new task */
 Route::get('/create', 'Tasks_controller@create');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
