@@ -20,6 +20,7 @@ class CreateTransactionsTable extends Migration
             //$table->integer('id_type')->unsigned();
             //$table->integer('id_user')->unsigned();
             $table->double('amount');
+            $table->timestamp('date_time')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
     }

@@ -45,7 +45,7 @@
                 </thead>
                 <tbody id='current' class="col-sm-12">
                 @foreach($tasks as $task)
-                    <tr id="task_" + {{ $task->id }} + ">
+                    <tr id="task_" + {{ $task->id }}>
                     <td class="table-text">
                         <div>
                             {{ $task->task }}
@@ -63,10 +63,6 @@
             </table>
         </div>
     </div>
+    </div>
 
-@stop
-
-@section('footer')
-    <script src="jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="scripts.js?3432327"></script>
 @stop

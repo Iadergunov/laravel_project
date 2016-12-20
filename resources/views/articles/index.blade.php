@@ -16,20 +16,5 @@
         <button class="fa fa-btn fa-trash">Delete article></button>
     @endforeach
 
-@stop
-
-@section('footer')
-    <script>
-
-        $('.fa-trash').on('click', function (e) {
-            e.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: "/articles/delete",
-                data: {
-                    id_article:{{$article->id}}
-                }
-            });
-        });
-    </script>
+    <a href="{{ action('Articles_controller@create') }}"><button class="btn btn-primary">Create new article</button></a>
 @stop

@@ -8,19 +8,24 @@ use App\Http\Requests\ArticleRequest;
 
 class Articles_controller extends Controller
 {
+    /**
+     * Basic method to show all articles
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
     public function index(){
-        //$articles = Article::latest()->get();
-        $articles =[];
+        $articles = Article::latest()->get();
         return view('articles.index', compact('articles'));
     }
 
     /**
      * Show on particular article defined by id
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
     public function show_article($id){
         $article = Article::findOrFail($id);
-
         return view('articles.show_article', compact('article'));
     }
 
@@ -44,10 +49,16 @@ class Articles_controller extends Controller
         return redirect('articles');
     }
 
+    /**
+     * Edit method for article
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
     public function edit($id){
         $article = Article::findOrFail($id);
         return view('articles.edit', compact('article'));
     }
+
 
     public function update($id, ArticleRequest $request){
         $input = $request->all();

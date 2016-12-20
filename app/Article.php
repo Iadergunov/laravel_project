@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    protected $fillable = ['title', 'body', 'excerpt'];
+    protected $fillable = ['title', 'body', 'excerpt', 'published_at'];
 
     /**
      * An article is owned by a user

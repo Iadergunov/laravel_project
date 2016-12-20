@@ -9,35 +9,76 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/styles.css') }}" />
-    <!--<link href="styles.css?13" rel='stylesheet' type='text/css'> -->
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <!--<link href="main.css?13" rel='stylesheet' type='text/css'> -->
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Styles -->
+    <link href="/css/app.css" type="text/css" rel="stylesheet">
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-                    <span class="sr-only">Toggle navigation</span>
+
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" class="navbar-brand">Laravel</a>
-            </div>
-            <div id="navbarCollapse" class="collapse navbar-collapse">
+
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{action('Tasks_controller@index')}}">
-                    Task List
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
                 </a>
-                <a class="navbar-brand" href="{{action('Articles_controller@index')}}">
-                    Articles
-                </a>
-                <a class="navbar-brand" href="{{action('Finance_controller@index') }}">
-                    Finance
-                </a>
+
+            </div>
+
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    <li><a class="navbar-brand" href="{{action('Tasks_controller@index')}}">
+                        Task List
+                    </a></li>
+                    <li><a class="navbar-brand" href="{{action('Articles_controller@index')}}">
+                        Articles
+                    </a></li>
+                    <li><a class="navbar-brand" href="{{action('Finance_controller@index') }}">
+                        Finance
+                    </a></li>
+                </ul>
+
+                <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Зарегистрироваться</a></li>
-                    <li><a href="#">Войти</a></li>
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        <li><a href="{{ url('/register') }}">Register</a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ url('/logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -53,8 +94,9 @@
         </div>
     </div>
     @yield('footer')
-<script src="{{asset('/js/jquery-3.1.1.min.js') }}"></script>
-<script type="text/javascript" src="scripts.js?37"></script>
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+<script type="text/javascript" src="/js/app.js"></script>
 
 </body>
 </html>
