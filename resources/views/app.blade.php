@@ -89,7 +89,7 @@
     <div class="navbar-fixed-bottom row-fluid">
         <div class="navbar-inner">
             <div class="container">
-                Created By Igor Dergunov
+                <p class="text-muted">Created By Igor Dergunov</p>
             </div>
         </div>
     </div>
