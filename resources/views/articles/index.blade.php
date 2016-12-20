@@ -13,8 +13,9 @@
         <div class="body">
             <p>{{ $article->body }}</p>
         </div>
-        <button class="fa fa-btn fa-trash">Delete article></button>
+        <button class="fa fa-btn fa-trash">Delete article</button>
     @endforeach
-
-    <a href="{{ action('Articles_controller@create') }}"><button class="btn btn-primary">Create new article</button></a>
+    <div class="col-md-12">
+        <a href="{{ action('Articles_controller@create') }}"><button class="btn btn-primary">Create new article</button></a>
+    </div>
 @stop

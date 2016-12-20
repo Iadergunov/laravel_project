@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
-
 class Articles_controller extends Controller
 {
     /**
@@ -43,8 +43,9 @@ class Articles_controller extends Controller
      */
 
     public function store(ArticleRequest $request){
-        Auth::user();
+        //Auth::user();
         $input = $request->all();
+        $input['published_at'] = Carbon::now();
         Article::create($input);
         return redirect('articles');
     }

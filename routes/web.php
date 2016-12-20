@@ -23,7 +23,6 @@ Route::get('/about', 'Pages_controller@about');
 Route::get('/finance', 'Finance_controller@index');
 
 /**
- *
  Routes for section Articles
  */
 
@@ -45,6 +44,10 @@ Route::get('articles/{id}/edit', 'Articles_controller@edit');
 Route::post('articles/{id}/', 'Articles_controller@update');
 
 Route::post('articles/delete/{id}', 'Articles_controller@delete');
+
+
+
+
 /**
  *
 Routes for section Tasks
