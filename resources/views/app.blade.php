@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <!--<link href="main.css?13" rel='stylesheet' type='text/css'> -->
+    <!--<link rel="stylesheet" type="text/css" href="/css/main.css"> -->
+    <link href="{{ URL::asset('css/main.css') }}" rel='stylesheet' type='text/css'>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

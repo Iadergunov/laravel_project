@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-    Articles
+    Create new article
 @stop
 
 @section('content')

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ArticleRequest extends FormRequest
+class CreateTransactionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class ArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:3',
-            'body' => 'required',
-            'published_at' => 'required|date'
+            'name' => 'required|min:3',
+            'amount' => 'required|numeric',
+            'date_time' => 'required|date'
         ];
     }
 }
