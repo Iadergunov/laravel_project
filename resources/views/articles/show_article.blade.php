@@ -9,5 +9,12 @@
     <div class="text-info">
         {{ $article->body }}
     </div>
-
+    <div class="form-horizontal">
+        <a href="{{ action('Articles_controller@edit', [$article->id]) }}">
+            <button class="btn btn-primary"><i class="fa fa-btn fa-pencil"></i>Change article</button>
+        </a>
+        {!! Form::open([ 'method' => 'DELETE', 'action' => ['Articles_controller@destroy', $article->id]]) !!}
+            <button class="btn btn-danger"><i class="fa fa-btn fa-trash"></i>Delete article</button>
+        {!! Form::close() !!}
+    </div>
 @stop

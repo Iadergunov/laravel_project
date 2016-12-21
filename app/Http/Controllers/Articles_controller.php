@@ -24,7 +24,7 @@ class Articles_controller extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function show_article($id){
+    public function show($id){
         $article = Article::findOrFail($id);
         return view('articles.show_article', compact('article'));
     }
@@ -50,7 +50,8 @@ class Articles_controller extends Controller
     }
 
     /**
-     * Edit method for article
+     * Method to get edit form for article
+     * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
@@ -59,7 +60,12 @@ class Articles_controller extends Controller
         return view('articles.edit', compact('article'));
     }
 
-
+    /**
+     * Method to save changed article
+     * @param $id
+     * @param ArticleRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function update($id, ArticleRequest $request){
         $input = $request->all();
         $article = Article::findOrFail($id);
@@ -67,7 +73,7 @@ class Articles_controller extends Controller
         return redirect('articles');
     }
 
-    public function delete($id){
+    public function destroy($id){
         $article = Article::findOrFail($id);
         $article->forceDelete();
         return redirect('articles');
