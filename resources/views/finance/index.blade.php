@@ -21,9 +21,7 @@
         </tr>
         </thead>
         <tbody>
-        {{ $sum = 0}}
         @foreach($transactions as $transaction)
-            {{ $sum = $sum + $transaction->amount }}
             <tr class="active">
                 <td><div>{{ $transaction->name }}</div></td>
                 <td><div>{{ $transaction->amount }}</div></td>
@@ -34,7 +32,7 @@
         @endforeach
             <tr class="active">
                 <td><div>Sum</div></td>
-                <td><div>{{ $sum }}</div></td>
+                <td><div>{{ $transactions->sum('amount') }}</div></td>
                 <td></td>
                 <td></td>
                 <td></td>
