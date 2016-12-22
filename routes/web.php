@@ -52,15 +52,14 @@ Route::get('/home', 'HomeController@index');
  * Routes for section finance
  */
 
-Route::get('transactions', 'Finance_controller@index');
+Route::get('finance', 'Finance_controller@index');
 
-Route::get('transaction/create', 'Finance_controller@create_transaction');
+Route::resource('finance/transactions', 'Transactions_controller');
 
-Route::post('transactions', 'Finance_controller@store_transaction');
 
-Route::get('transactions/today', 'Finance_controller@today_transactions');
+Route::get('finance/today', 'Transactions_controller@today_transactions');
 
-Route::get('transactions/yesterday', 'Finance_controller@yesterday_transactions');
+Route::get('finance/yesterday', 'Transactions_controller@yesterday_transactions');
 
 /**
  * Routes for user`s accounts
