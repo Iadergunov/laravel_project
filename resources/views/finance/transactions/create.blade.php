@@ -7,7 +7,7 @@
 @section('content')
     <h1>Add a new transaction</h1>
 
-    {!! Form::open(['action' => 'Finance_controller@store_transaction']) !!}
+    {!! Form::open(['action' => 'Transactions_controller@store']) !!}
         <div class="form-group">
             {!! Form::label('name', 'Name:') !!}
             {!! Form::text('name', null, ['class' => 'form-control']) !!}

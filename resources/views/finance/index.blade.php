@@ -6,42 +6,15 @@
 
 
 @section('content')
-    <h1>Finance</h1>
-    <a href="{{action('Finance_controller@index')}}">All</a>
-    <a href="{{action('Finance_controller@today_transactions')}}">Today</a>
-    <a href="{{action('Finance_controller@yesterday_transactions')}}">Yesterday</a>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Amount</th>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Method</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($transactions as $transaction)
-            <tr class="active">
-                <td><div>{{ $transaction->name }}</div></td>
-                <td><div>{{ $transaction->amount }}</div></td>
-                <td><div>{{ $transaction->date_time->format('d-m-Y') }}</div></td>
-                <td></td>
-                <td>{{ $transaction->account->name }}</td>
-            </tr>
-        @endforeach
-            <tr class="active">
-                <td><div>Sum</div></td>
-                <td><div>{{ $transactions->sum('amount') }}</div></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="col-md-12">
-        <a href="{{ action('Finance_controller@create_transaction') }}"><button class="btn btn-primary">Create new transaction</button></a>
+    <div class="list-group">
+        <a href="{{ action('Transactions_controller@index') }}" class="list-group-item">
+            <span class="glyphicon glyphicon-rub"></span> Transactions
+        </a>
+        <a href="{{ action('Account_controller@index') }}" class="list-group-item">
+            <span class="glyphicon glyphicon-folder-close"></span> Accounts
+        </a>
+        <a href="#" class="list-group-item">
+            <span class="glyphicon glyphicon-th-list"></span> Groups
+        </a>
     </div>
-
 @stop
