@@ -10,7 +10,8 @@ class Transaction extends Model
     protected $fillable = [
         'name',
         'amount',
-        'date_time'
+        'date_time',
+        'account_id'
     ];
 
     protected $dates = ['date_time'];
@@ -25,5 +26,9 @@ class Transaction extends Model
 
     public function user(){
         return $this->belongsTo('App\User');
+    }
+
+    public function account(){
+        return $this->belongsTo('App\Account');
     }
 }

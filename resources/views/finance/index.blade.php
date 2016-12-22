@@ -27,7 +27,7 @@
                 <td><div>{{ $transaction->amount }}</div></td>
                 <td><div>{{ $transaction->date_time->format('d-m-Y') }}</div></td>
                 <td></td>
-                <td></td>
+                <td>{{ $transaction->account->name }}</td>
             </tr>
         @endforeach
             <tr class="active">

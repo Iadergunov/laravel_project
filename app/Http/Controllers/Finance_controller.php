@@ -9,10 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class Finance_controller extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index(){
-        $transactions = Transaction::latest('date_time')->get();
-        //$summ = 3;
-        //$summ = $transactions->sum('amount');
+        //$transactions = Transaction::latest('date_time')->get();
+        $transactions = Auth::user()->transactions()->latest('date_time')->get();
         return view('finance.index', compact('transactions'));
     }
 
@@ -29,12 +32,12 @@ class Finance_controller extends Controller
     }
 
     public function today_transactions(){
-        $transactions = Transaction::latest('date_time')->today()->get();
+        $transactions = Auth::user()->transactions()->latest('date_time')->today()->get();
         return view('finance.index', compact('transactions'));
     }
 
     public function yesterday_transactions(){
-        $transactions = Transaction::latest('date_time')->yesterday()->get();
+        $transactions = Auth::user()->transactions()->latest('date_time')->yesterday()->get();
         return view('finance.index', compact('transactions'));
     }
 }

@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class Articles_controller extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth', ['only' => 'create']);
+    }
+
     /**
      * Basic method to show all articles
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -37,6 +41,9 @@ class Articles_controller extends Controller
      */
 
     public function create(){
+        if(Auth::guest()){
+            return redirect('articles');
+        }
         return view('articles.create');
     }
 
@@ -79,7 +86,7 @@ class Articles_controller extends Controller
 
     public function destroy($id){
         $article = Article::findOrFail($id);
-        $article->forceDelete();
+        $article->delete();
         return redirect('articles');
     }
 }

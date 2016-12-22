@@ -61,3 +61,9 @@ Route::post('transactions', 'Finance_controller@store_transaction');
 Route::get('transactions/today', 'Finance_controller@today_transactions');
 
 Route::get('transactions/yesterday', 'Finance_controller@yesterday_transactions');
+
+/**
+ * Routes for user`s accounts
+ */
+
+Route::resource('finance/accounts', 'Account_controller');
