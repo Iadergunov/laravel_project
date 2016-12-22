@@ -8,7 +8,10 @@ class Task extends Model
 {
     protected $fillable = [
         'task',
-        'is_done',
-        'id_user'
+        'is_done'
     ];
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

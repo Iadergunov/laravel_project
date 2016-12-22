@@ -45,7 +45,12 @@
                 </thead>
                 <tbody id='current' class="col-sm-12">
                 @foreach($tasks as $task)
-                    <tr id="task_" + {{ $task->id }}>
+                    @if($task->is_done = 0)
+                        {{$class = ''}}
+                    @else
+                        {{$class = 'done-task' }}
+                    @endif
+                    <tr id="task_{{ $task->id }}" class="{{$class}}">
                     <td class="table-text">
                         <div>
                             {{ $task->task }}

@@ -22,4 +22,8 @@ class Transaction extends Model
     public function scopeYesterday($query){
         $query->where('date_time', '=', Carbon::yesterday());
     }
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

@@ -26,4 +26,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * A user can have many articles
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function articles(){
+        return $this->hasMany('App\Article');
+    }
+
+    public function tasks(){
+        return $this->hasMany('App\Task');
+    }
+
+    public function transactions(){
+        return $this->hasMany('App\Transaction');
+    }
 }

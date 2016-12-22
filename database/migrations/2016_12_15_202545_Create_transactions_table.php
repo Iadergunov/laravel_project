@@ -18,10 +18,11 @@ class CreateTransactionsTable extends Migration
             $table->string('name');
             //$table->integer('id_account')->unsigned();
             //$table->integer('id_type')->unsigned();
-            //$table->integer('id_user')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->double('amount');
             $table->timestamp('date_time')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

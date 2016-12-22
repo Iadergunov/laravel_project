@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateTransactionRequest;
 use App\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Finance_controller extends Controller
 {
@@ -21,7 +22,9 @@ class Finance_controller extends Controller
 
     public function store_transaction(CreateTransactionRequest $request){
         $input = $request->all();
-        Transaction::create($input);
+        $transaction = new Transaction($input);
+        Auth::user()->transactions()->save($transaction);
+        //Transaction::create($input);
         return redirect('transactions');
     }
 

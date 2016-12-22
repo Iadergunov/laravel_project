@@ -4,14 +4,13 @@ $(document).ready(function() {
 	$('#Add').click(function(e) {
 		e.preventDefault();
 		//get current task text
-		var encoded_task_text =  htmlEncode($('#task-name').val());
-		//task_text = htmlencode(task_text);
+		var task_text =  $('#task-name').val();
 		//Checking for empty task
-		if(encoded_task_text == ""){
+		if(task_text == ""){
 			alert("Please enter some text");
 			$('#task-name').attr('placeholder','Please enter some text');
 		} else {
-		Add_new_task(encoded_task_text);
+		Add_new_task(task_text);
 		}
     });
 
@@ -65,27 +64,6 @@ $(document).ready(function() {
 		Change_task_status(task_status, id, full_id);
     });
 
-	Get_task_list();
-
-	//Generating task_table
-	function Get_task_list() {
-		$.ajax({
-			type: "GET",
-			url: "/get_task_list.php",
-			data: {},
-			success: function (data) {
-				var task_list = jQuery.parseJSON(data);
-				//just notice how get elements
-				//alert(task_list[1].is_done);
-				task_list.forEach(function(item) {
-					Display_task_on_page(item.task_text, item.id);
-					if (item.is_done){
-						$("tbody").find("tr:contains(" + item.task_text + ")").addClass('done-task');
-					}
-				});
-			}
-		});
-	}
 
 	function Update_task_text(task_text, id){
             $.ajax({
@@ -105,8 +83,8 @@ $(document).ready(function() {
                 type: "POST",
                 url: "/change_status_task.php",
                 data: {
-                    id_task: id,
-                    status: is_done
+                    id: id,
+                    is_done: task_status
                 },
                 success: function(data){
                     $("#" + full_id).toggleClass('done-task');
@@ -118,7 +96,7 @@ $(document).ready(function() {
     function Add_new_task(task_text){
     	$.ajax({
 		    type: "POST",
-		    url: "/newtask.php",
+		    url: "/tasks/store",
 		    data: {
 		    	task: task_text
 		 	},
@@ -149,9 +127,4 @@ $(document).ready(function() {
 		$('#current').append(tr_block);
 	}
 
-    function htmlEncode(value){
-	  //create a in-memory div, set it's inner text(which jQuery automatically encodes)
-	  //then grab the encoded contents back out.  The div never exists on the page.
-	  return $('<div/>').text(value).html();
-	}
 });
