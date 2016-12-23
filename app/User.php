@@ -35,14 +35,26 @@ class User extends Authenticatable
         return $this->hasMany('App\Article');
     }
 
+    /**
+     * A user can have many task
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function tasks(){
         return $this->hasMany('App\Task');
     }
 
+    /**
+     * A user can have many transactions
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function transactions(){
         return $this->hasMany('App\Transaction');
     }
 
+    /**
+     * A user can have many accounts
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function accounts(){
         return $this->hasMany('App\Account');
     }

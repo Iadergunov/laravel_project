@@ -6,15 +6,11 @@
 
 
 @section('content')
-    <div class="list-group">
-        <a href="{{ action('Transactions_controller@index') }}" class="list-group-item">
-            <span class="glyphicon glyphicon-rub"></span> Transactions
-        </a>
-        <a href="{{ action('Account_controller@index') }}" class="list-group-item">
-            <span class="glyphicon glyphicon-folder-close"></span> Accounts
-        </a>
-        <a href="#" class="list-group-item">
-            <span class="glyphicon glyphicon-th-list"></span> Groups
-        </a>
+    @include('finance.partial._header')
+    <div class="row">
+        <div class="col-sm-9">
+
+        </div>
+        @include('finance.partial._sidebar')
     </div>
 @stop

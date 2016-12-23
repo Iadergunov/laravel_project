@@ -1,0 +1,1 @@
+<h1><a href="{{ action('Finance_controller@index') }}"> Finance</a></h1>

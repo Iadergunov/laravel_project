@@ -25,7 +25,7 @@ class ArticleRequest extends FormRequest
     {
         return [
             'title' => 'required|min:3',
-            'body' => 'required',
+            'body' => 'required|min:3',
             'published_at' => 'required|date'
         ];
     }

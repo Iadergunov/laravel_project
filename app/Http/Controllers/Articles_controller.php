@@ -56,7 +56,6 @@ class Articles_controller extends Controller
         $article = new Article($input);
         //assign user_id to active user
         Auth::user()->articles()->save($article);
-        //Article::create($input);
         return redirect('articles');
     }
 

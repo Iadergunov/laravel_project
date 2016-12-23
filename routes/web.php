@@ -24,23 +24,12 @@ Route::get('/about', 'Pages_controller@about');
  Routes for section Articles
  */
 
-
-//Route::get('articles', 'Articles_controller@index');
-
-//Route::get('articles/create', 'Articles_controller@create');
-//Route::get('articles/{id}', 'Articles_controller@show_article');
-//Route::post('articles', 'Articles_controller@store');
-//Route::get('articles/{id}/edit', 'Articles_controller@edit');
-
-
 Route::resource('articles', 'Articles_controller');
 
 
 /**
- *
 Routes for section Tasks
  */
-
 
 Route::resource('tasks', 'Tasks_controller');
 
@@ -54,8 +43,11 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('finance', 'Finance_controller@index');
 
-Route::resource('finance/transactions', 'Transactions_controller');
+/**
+ * Routes for transaction sections
+ */
 
+Route::resource('finance/transactions', 'Transactions_controller');
 
 Route::get('finance/today', 'Transactions_controller@today_transactions');
 
