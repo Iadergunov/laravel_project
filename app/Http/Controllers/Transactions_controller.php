@@ -26,7 +26,7 @@ class Transactions_controller extends Controller
         $input = $request->all();
         $transaction = new Transaction($input);
         Auth::user()->transactions()->save($transaction);
-        return redirect('finance.index');
+        return redirect(action('Transactions_controller@index'));
     }
 
     public function today_transactions(){

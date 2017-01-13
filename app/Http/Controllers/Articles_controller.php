@@ -26,12 +26,11 @@ class Articles_controller extends Controller
 
     /**
      * Show on particular article defined by id
-     * @param $id
+     * @param Article $article
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function show($id){
-        $article = Article::findOrFail($id);
+    public function show(Article $article){
         return view('articles.show_article', compact('article'));
     }
 
@@ -56,17 +55,16 @@ class Articles_controller extends Controller
         $article = new Article($input);
         //assign user_id to active user
         Auth::user()->articles()->save($article);
-        return redirect('articles');
+        return redirect(action('Articles_controller@index'));
     }
 
     /**
      * Method to get edit form for article
-     * @param $id
+     * @param Article $article
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function edit($id){
-        $article = Article::findOrFail($id);
+    public function edit(Article $article){
         return view('articles.edit', compact('article'));
     }
 
@@ -80,12 +78,15 @@ class Articles_controller extends Controller
         $input = $request->all();
         $article = Article::findOrFail($id);
         $article->update($input);
-        return redirect('articles');
+        return redirect(action('Articles_controller@index'));
     }
 
-    public function destroy($id){
-        $article = Article::findOrFail($id);
+    /**
+     * @param Article $article
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroy(Article $article){
         $article->delete();
-        return redirect('articles');
+        return redirect(action('Articles_controller@index'));
     }
 }
