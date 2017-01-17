@@ -15,6 +15,7 @@
         </div>
         <div class="text-info">
             <p>Written by: {{ $article->user->name }}</p>
+            <p>Published on: {{ $article->published_at }}</p>
         </div>
     @endforeach
 

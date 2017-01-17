@@ -9,5 +9,8 @@
         <a href="#" class="list-group-item">
             <span class="glyphicon glyphicon-th-list"></span> Groups
         </a>
+        <a href="{{action('Finance_controller@reports')}}" class="list-group-item">
+            <span class="glyphicon glyphicon-th-list"></span> Reports
+        </a>
     </div>
 </div>

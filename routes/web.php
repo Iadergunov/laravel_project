@@ -58,3 +58,8 @@ Route::get('finance/yesterday', 'Transactions_controller@yesterday_transactions'
  */
 
 Route::resource('finance/accounts', 'Account_controller');
+/**
+ * Routes for reports
+ */
+
+Route::get('finance/reports', 'Finance_controller@reports');

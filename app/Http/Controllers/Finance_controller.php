@@ -14,4 +14,8 @@ class Finance_controller extends Controller
     public function index(){
         return view('finance.index');
     }
+
+    public function reports(){
+        return view('finance.reports.index');
+    }
 }

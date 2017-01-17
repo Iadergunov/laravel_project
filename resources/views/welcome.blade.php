@@ -1,21 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('app')
 
-        <title>Project on laravel</title>
+@section('title')
+    Laravel Project
+@stop
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Dashboard</div>
 
-        <!-- Styles -->
-        <style>
-
-        </style>
-    </head>
-    <body>
-
-    </body>
-</html>
+                    <div class="panel-body">
+                        <p>Для тестирования функционала определенных разделов сайта можно использовать тестового юзера</p>
+                        <p>User: test@mail.ru</p>
+                        <p>Password: jlSjvdIHqJt</p>
+                        <p>Сайт находится в разработке, поэтому некоторый функционал может быть недоступен или еще не реализован.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@stop
