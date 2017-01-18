@@ -13,15 +13,28 @@ class Transactions_controller extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * get list of transactions
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(){
         $transactions = Auth::user()->transactions()->latest('date_time')->get();
         return view('finance.transactions.index', compact('transactions'));
     }
 
+    /**
+     * view for creating new transactions
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create(){
         return view('finance.transactions.create');
     }
 
+    /**
+     * Save a new transaction
+     * @param CreateTransactionRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(CreateTransactionRequest $request){
         $input = $request->all();
         $transaction = new Transaction($input);

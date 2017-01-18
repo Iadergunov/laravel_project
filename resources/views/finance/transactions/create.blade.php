@@ -30,7 +30,7 @@
                 {!! Form::submit('Add transaction', ['class' => '"btn btn-primary form-control']) !!}
             </div>
         {!! Form::close() !!}
+        @include('errors.list')
     </div>
     @include('finance.partial._sidebar')
-    @include('errors.list')
 @stop
