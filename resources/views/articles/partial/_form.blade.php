@@ -10,7 +10,7 @@
 <!-- Multiple select field-->
 <div class="form-group">
     {!! Form::label('tagList', 'Tags:') !!}
-    {!! Form::select('tagList[]', $tags, null, ['class' => 'form-control', 'multiple']) !!}
+    {!! Form::select('tagList[]', $tags, null, ['id' => 'tagList' ,'class' => 'form-control', 'multiple']) !!}
 </div>
 
 <div class="form-group">
@@ -22,3 +22,10 @@
     {!! Form::submit($Submit_button_text, ['class' => '"btn btn-primary form-control']) !!}
 </div>
 
+@section('footer')
+    <script>
+        $('#tagList').select2({
+            placeholder: 'Choose a tag'
+        });
+    </script>
+@endsection

@@ -11,7 +11,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <!--<link rel="stylesheet" type="text/css" href="/css/main.css"> -->
     <link href="{{ URL::asset('css/main.css') }}" rel='stylesheet' type='text/css'>
-
+    <!-- Selects2 jquery package-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -93,10 +94,10 @@
             </div>
         </div>
     </div>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     @yield('footer')
-<script src="/js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
-<script type="text/javascript" src="/js/app.js"></script>
-
 </body>
 </html>
