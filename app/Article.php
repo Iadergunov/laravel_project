@@ -50,4 +50,13 @@ class Article extends Model
     public function tags(){
         return $this->belongsToMany('App\Tag')->withTimestamps();
     }
+
+    /**
+     * Get a list of tag ids which associated with the given article
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function getTagListAttribute(){
+        //return $this->tags->lists('id')->all();
+        return $this->tags->pluck('id')->all();
+    }
 }

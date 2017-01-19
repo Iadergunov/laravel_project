@@ -27,7 +27,8 @@ class Transactions_controller extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create(){
-        return view('finance.transactions.create');
+        $accounts = Auth::user()->accounts->pluck('name', 'id');
+        return view('finance.transactions.create', compact('accounts'));
     }
 
     /**

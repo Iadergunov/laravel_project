@@ -9,6 +9,16 @@
     <div class="text-info">
         {{ $article->body }}
     </div>
+    @unless($article->tags->isEmpty())
+    <div>
+        <h5>Tags:</h5>
+        <ul>
+            @foreach($article->tags as $tag)
+                <li>{{$tag->name}}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endunless
     <div class="form-horizontal">
         <a href="{{ action('Articles_controller@edit', [$article->id]) }}">
             <button class="btn btn-primary"><i class="fa fa-btn fa-pencil"></i>Change article</button>

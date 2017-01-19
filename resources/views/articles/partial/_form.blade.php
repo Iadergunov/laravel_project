@@ -7,6 +7,11 @@
     {!! Form::label('body', 'Body:') !!}
     {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
 </div>
+<!-- Multiple select field-->
+<div class="form-group">
+    {!! Form::label('tagList', 'Tags:') !!}
+    {!! Form::select('tagList[]', $tags, null, ['class' => 'form-control', 'multiple']) !!}
+</div>
 
 <div class="form-group">
     {!! Form::label('published_at', 'Publish on:') !!}

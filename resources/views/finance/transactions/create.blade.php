@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 {!! Form::label('account_id', 'Payment method:') !!}
-                {!! Form::select('account_id', Auth::user()->accounts->pluck('name', 'id')) !!}
+                {!! Form::select('account_id', $accounts, null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::submit('Add transaction', ['class' => '"btn btn-primary form-control']) !!}

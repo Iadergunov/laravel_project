@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
@@ -43,7 +44,8 @@ class Articles_controller extends Controller
         if(Auth::guest()){
             return redirect('articles');
         }
-        return view('articles.create');
+        $tags = Tag::pluck('name', 'id');
+        return view('articles.create', compact('tags'));
     }
 
     /**
@@ -51,10 +53,10 @@ class Articles_controller extends Controller
      */
 
     public function store(ArticleRequest $request){
-        $input = $request->all();
-        $article = new Article($input);
         //assign user_id to active user
-        Auth::user()->articles()->save($article);
+        $article = Auth::user()->articles()->create($request->all());
+        //assign tags
+        $this->syncTags($article, $request->input('tagList'));
         return redirect(action('Articles_controller@index'));
     }
 
@@ -65,7 +67,8 @@ class Articles_controller extends Controller
      */
 
     public function edit(Article $article){
-        return view('articles.edit', compact('article'));
+        $tags = Tag::pluck('name', 'id');
+        return view('articles.edit', compact('article', 'tags'));
     }
 
     /**
@@ -75,10 +78,19 @@ class Articles_controller extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update($id, ArticleRequest $request){
-        $input = $request->all();
         $article = Article::findOrFail($id);
-        $article->update($input);
+        $article->update($request->all());
+        $this->syncTags($article, $request->input('tagList'));
         return redirect(action('Articles_controller@index'));
+    }
+
+    /**
+     * Sync up the list of tags in DB.
+     * @param Article $article
+     * @param array $tags
+     */
+    private function syncTags(Article $article, array $tags){
+        $article->tags()->sync($tags);
     }
 
     /**
