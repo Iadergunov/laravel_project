@@ -24,11 +24,27 @@ class Transaction extends Model
         $query->where('date_time', '=', Carbon::yesterday());
     }
 
+    /**
+     * Get a user, to whom belongs transaction
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user(){
         return $this->belongsTo('App\User');
     }
 
+    /**
+     * Get a account, associated with current transaction
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function account(){
         return $this->belongsTo('App\Account');
+    }
+
+    /**
+     * Get a group, associated with current transaction
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function group(){
+        return $this->belongsTo('App\Group_of_transactions');
     }
 }
