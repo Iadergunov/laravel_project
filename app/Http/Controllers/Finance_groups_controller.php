@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Auth;
 class Finance_groups_controller extends Controller
 {
     public function index(){
-        $groups = Auth::user()->finance_groups()->get();
-        return (view('finance.groups.index', compact('groups')));
+        $finance_groups = Auth::user()->finance_groups()->get();
+        return (view('finance.groups.index', compact('finance_groups')));
     }
 
     /**
@@ -28,8 +28,21 @@ class Finance_groups_controller extends Controller
      */
     public function store(Request $request){
         $input = $request->all();
-        $group = new Finance_group($input);
-        Auth::user()->finance_groups()->save($group);
+        $finance_group = new Finance_group($input);
+        Auth::user()->finance_groups()->save($finance_group);
         return redirect(action('Finance_groups_controller@index'));
     }
+
+
+    /**
+     * Show on particular group defined by id
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function show($id){
+        $finance_group = Finance_group::findOrFail($id);
+        $transactions = $finance_group->transactions()->get();
+        return view('finance.groups.show', compact('finance_group','transactions'));
+      }
 }

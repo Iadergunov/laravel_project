@@ -5,9 +5,9 @@
     <div class="col-sm-9">
         <div class="panel panel-default">
             <div class="panel-heading">Groups of transactions</div>
-            @foreach($groups as $group)
+            @foreach($finance_groups as $finance_group)
                 <div class="panel-body">
-                    <p>{{ $group->name }}</p>
+                    <p><a href="{{action('Finance_groups_controller@show', [$finance_group->id])}}">{{ $finance_group->name }}</a></p>
                 </div>
             @endforeach
             <div class="col-md-12">
