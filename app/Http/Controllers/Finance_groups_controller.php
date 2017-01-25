@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Group_of_transactions;
+use App\Finance_group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Groups_of_transactions_controller extends Controller
+class Finance_groups_controller extends Controller
 {
     public function index(){
-        $groups = Auth::user()->Group_of_transactions()->get();
+        $groups = Auth::user()->finance_groups()->get();
         return (view('finance.groups.index', compact('groups')));
     }
 
@@ -28,8 +28,8 @@ class Groups_of_transactions_controller extends Controller
      */
     public function store(Request $request){
         $input = $request->all();
-        $group = new Group_of_transactions($input);
-        Auth::user()->Group_of_transactions()->save($group);
-        return redirect(action('Groups_of_transactions_controller@index'));
+        $group = new Finance_group($input);
+        Auth::user()->finance_groups()->save($group);
+        return redirect(action('Finance_groups_controller@index'));
     }
 }

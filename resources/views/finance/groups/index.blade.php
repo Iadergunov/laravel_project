@@ -11,7 +11,7 @@
                 </div>
             @endforeach
             <div class="col-md-12">
-                <a href="{{ action('Groups_of_transactions_controller@create') }}"><button class="btn btn-primary">Create new group</button></a>
+                <a href="{{ action('Finance_groups_controller@create') }}"><button class="btn btn-primary">Create new group</button></a>
             </div>
         </div>
     </div>

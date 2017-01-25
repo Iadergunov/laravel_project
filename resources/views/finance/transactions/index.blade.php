@@ -18,7 +18,7 @@
                 <th>Name</th>
                 <th>Amount</th>
                 <th>Date</th>
-                <th>Type</th>
+                <th>Group</th>
                 <th>Method</th>
             </tr>
             </thead>
@@ -28,7 +28,7 @@
                     <td><div>{{ $transaction->name }}</div></td>
                     <td><div>{{ $transaction->amount }}</div></td>
                     <td><div>{{ $transaction->date_time->format('d-m-Y') }}</div></td>
-                    <td></td>
+                    <td>{{ $transaction->finance_group->name }}</td>
                     <td>{{ $transaction->account->name }}</td>
                 </tr>
             @endforeach

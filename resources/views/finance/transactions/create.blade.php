@@ -27,6 +27,10 @@
                 {!! Form::select('account_id', $accounts, null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
+                {!! Form::label('finance_group_id', 'Group:') !!}
+                {!! Form::select('finance_group_id', $finance_groups, null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
                 {!! Form::submit('Add transaction', ['class' => '"btn btn-primary form-control']) !!}
             </div>
         {!! Form::close() !!}

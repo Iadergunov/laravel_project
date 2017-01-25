@@ -59,7 +59,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Account');
     }
 
-    public function Group_of_transactions(){
-        return$this->hasMany('App\Group_of_transactions');
+    public function finance_groups(){
+        return$this->hasMany('App\Finance_group');
     }
 }

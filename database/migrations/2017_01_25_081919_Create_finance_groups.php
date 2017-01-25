@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGroupsOfTransactionTable extends Migration
+class CreateFinanceGroups extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateGroupsOfTransactionTable extends Migration
      */
     public function up()
     {
-        Schema::create('group_of_transactions', function (Blueprint $table) {
+        Schema::create('finance_groups', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('name');
@@ -22,7 +22,7 @@ class CreateGroupsOfTransactionTable extends Migration
         });
 
         Schema::table('transactions', function($table) {
-            $table->foreign('group_id')->references('id')->on('group_of_transactions');
+            $table->foreign('finance_group_id')->references('id')->on('finance_groups');
         });
     }
 
@@ -33,6 +33,6 @@ class CreateGroupsOfTransactionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_of_transactions');
+        Schema::dropIfExists('finance_groups');
     }
 }

@@ -9,7 +9,7 @@
     <div class="col-sm-9">
         <h2>Create a new group</h2>
 
-        {!! Form::open(['action' => 'Groups_of_transactions_controller@store']) !!}
+        {!! Form::open(['action' => 'Finance_groups_controller@store']) !!}
         <div class="form-group">
             {!! Form::label('name', 'Name:') !!}
             {!! Form::text('name', null, ['class' => 'form-control']) !!}

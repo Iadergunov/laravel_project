@@ -11,7 +11,8 @@ class Transaction extends Model
         'name',
         'amount',
         'date_time',
-        'account_id'
+        'account_id',
+        'finance_group_id'
     ];
 
     protected $dates = ['date_time'];
@@ -44,7 +45,7 @@ class Transaction extends Model
      * Get a group, associated with current transaction
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function group(){
-        return $this->belongsTo('App\Group_of_transactions');
+    public function finance_group(){
+        return $this->belongsTo('App\Finance_group');
     }
 }

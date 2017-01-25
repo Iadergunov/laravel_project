@@ -28,7 +28,8 @@ class Transactions_controller extends Controller
      */
     public function create(){
         $accounts = Auth::user()->accounts->pluck('name', 'id');
-        return view('finance.transactions.create', compact('accounts'));
+        $finance_groups = Auth::user()->finance_groups->pluck('name', 'id');
+        return view('finance.transactions.create', compact('accounts', 'finance_groups'));
     }
 
     /**
