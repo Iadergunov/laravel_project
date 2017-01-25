@@ -30,6 +30,13 @@
                     <td><div>{{ $transaction->date_time->format('d-m-Y') }}</div></td>
                     <td><a href="{{action('Finance_groups_controller@show', [$transaction->finance_group->id])}}">{{ $transaction->finance_group->name }}</a></td>
                     <td>{{ $transaction->account->name }}</td>
+                    <td>
+                        <div>
+                            {!! Form::open([ 'method' => 'DELETE', 'action' => ['Transactions_controller@destroy', $transaction->id]]) !!}
+                            <button class="btn btn-danger"><i class="fa fa-btn fa-trash"></i></button>
+                            {!! Form::close() !!}
+                        </div>
+                    </td>
                 </tr>
             @endforeach
                 <tr class="active">

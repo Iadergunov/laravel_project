@@ -47,6 +47,14 @@ class Transactions_controller extends Controller
         return redirect(action('Transactions_controller@index'));
     }
 
+    public function destroy($id){
+        $transaction = Transaction::FindOrFail($id);
+        $account = Account::findOrFail($transaction->account_id);
+        $account->change_balance(-$transaction->amount);
+        $transaction->delete();
+        return redirect(action('Transactions_controller@index'));
+    }
+
     public function today_transactions(){
         $transactions = Auth::user()->transactions()->latest('date_time')->today()->get();
         return view('finance.transactions.index', compact('transactions'));
