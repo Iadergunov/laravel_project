@@ -63,3 +63,9 @@ Route::resource('finance/accounts', 'Account_controller');
  */
 
 Route::get('finance/reports', 'Finance_controller@reports');
+
+/**
+ * Route for groups of transactions
+ */
+
+Route::resource('finance/groups', 'Groups_of_transactions_controller');

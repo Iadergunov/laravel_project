@@ -58,4 +58,8 @@ class User extends Authenticatable
     public function accounts(){
         return $this->hasMany('App\Account');
     }
+
+    public function Group_of_transactions(){
+        return$this->hasMany('App\Group_of_transactions');
+    }
 }

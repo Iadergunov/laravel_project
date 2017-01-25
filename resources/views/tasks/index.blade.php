@@ -13,7 +13,9 @@
             <div class="panel-body">
 
                 <!-- New Task Form -->
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="post">
+                    {{ csrf_field() }}
+                    <meta name="csrf-token" content="{{ csrf_token() }}" />
                     <!-- Task Name -->
                     <div class="form-group">
                         <label for="task-name" class="col-sm-3 control-label">Task</label>

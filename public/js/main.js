@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+	//Setup for ajax requests
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+
  	// handler for Add button
 	$('#Add').click(function(e) {
 		e.preventDefault();
@@ -95,7 +102,7 @@ $(document).ready(function() {
 	//add new task
     function Add_new_task(task_text){
     	$.ajax({
-		    type: "POST",
+		    type: "PUT",
 		    url: "/tasks/store",
 		    data: {
 		    	task: task_text

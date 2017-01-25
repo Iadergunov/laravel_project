@@ -18,6 +18,7 @@ class Tasks_controller extends Controller
         $input = $request->all();
         $task = new Task($input);
         Auth::user()->tasks()->save($task);
+        return redirect(action('Tasks_controller@index'));
     }
 
     public function change_status_task(TaskRequest $request){
