@@ -15,4 +15,9 @@ class Account extends Model
     public function transactions(){
         return $this->hasMany('App\Transaction');
     }
+
+    public function change_balance($amount){
+        $this->balance -=  $amount;
+        $this->save();
+    }
 }

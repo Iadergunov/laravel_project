@@ -24,4 +24,9 @@ class Account_controller extends Controller
         Auth::user()->accounts()->save($account);
         return redirect('finance/accounts');
     }
+
+    public function change_balance(Account $account,$amount){
+        $account->balance -=  $amount;
+        $account->save();
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\Http\Requests\CreateTransactionRequest;
 use App\Transaction;
 use Illuminate\Http\Request;
@@ -41,6 +42,8 @@ class Transactions_controller extends Controller
         $input = $request->all();
         $transaction = new Transaction($input);
         Auth::user()->transactions()->save($transaction);
+        $account = Account::findOrFail($transaction->account_id);
+        $account->change_balance($transaction->amount);
         return redirect(action('Transactions_controller@index'));
     }
 

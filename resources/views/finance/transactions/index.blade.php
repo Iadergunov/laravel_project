@@ -28,7 +28,7 @@
                     <td><div>{{ $transaction->name }}</div></td>
                     <td><div>{{ $transaction->amount }}</div></td>
                     <td><div>{{ $transaction->date_time->format('d-m-Y') }}</div></td>
-                    <td>{{ $transaction->finance_group->name }}</td>
+                    <td><a href="{{action('Finance_groups_controller@show', [$transaction->finance_group->id])}}">{{ $transaction->finance_group->name }}</a></td>
                     <td>{{ $transaction->account->name }}</td>
                 </tr>
             @endforeach
