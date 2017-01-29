@@ -43,6 +43,7 @@ class Finance_groups_controller extends Controller
     public function show($id){
         $finance_group = Finance_group::findOrFail($id);
         $transactions = $finance_group->transactions()->get();
-        return view('finance.groups.show', compact('finance_group','transactions'));
+        //return view('finance.groups.show', compact('finance_group','transactions'));
+        return view('finance.transactions.index', compact('transactions'));
       }
 }

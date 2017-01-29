@@ -70,6 +70,7 @@
             </table>
         </div>
     </div>
+        Текущая рабочая версия доступна по адресу <a href="http://todolist.tw1.ru">todolist.tw1.ru</a>
     </div>
 
 @stop
